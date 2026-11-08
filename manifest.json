@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Brave-EndShift",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Anti-furry-cloud",
-  "description": "YouTube videosunun nerede biteceğini seç. Döngüde dinlerken sondaki gereksiz kısımları her tekrarda atla.",
+  "description": "Choose where YouTube videos end. Skip unwanted outros on every loop.",
   "permissions": [
     "storage"
   ],

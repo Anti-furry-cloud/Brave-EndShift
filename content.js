@@ -99,17 +99,17 @@ function synchronize(force = false) {
 
 async function handleMessage(message) {
   if (!["GET_STATE", "SET_END", "CLEAR_END"].includes(message?.type)) {
-    throw new Error("Bilinmeyen komut.");
+    throw new Error("Unknown command.");
   }
   await synchronize();
   const video = trackedVideo;
   const videoId = activeVideoId;
   if (navigating || !videoId || videoId !== getVideoId() || !video ||
       !Number.isFinite(video.duration) || video.duration <= 0) {
-    throw new Error("Standart bir YouTube videosu açıp yüklenmesini bekle.");
+    throw new Error("Open a regular YouTube video and wait for it to load.");
   }
   if (message.type !== "GET_STATE" && message.videoId !== videoId) {
-    throw new Error("Video değişti. Panel güncellendikten sonra tekrar dene.");
+    throw new Error("The video changed. Wait for the panel to update and try again.");
   }
 
   if (message.type === "GET_STATE") {
@@ -118,10 +118,10 @@ async function handleMessage(message) {
   }
 
   if (message.type === "SET_END") {
-    if (isAdPlaying()) throw new Error("Reklam bittikten sonra bitiş noktası belirle.");
+    if (isAdPlaying()) throw new Error("Wait for the ad to finish before setting an ending.");
     if (!Number.isFinite(video.currentTime) || video.currentTime < 1 ||
         video.duration - video.currentTime < 1) {
-      throw new Error("Başlangıçtan ve sondan en az 1 saniye uzakta bir nokta seç.");
+      throw new Error("Choose a point at least 1 second after the start and before the end.");
     }
     const endTime = Math.round(video.currentTime * 10) / 10;
     await chrome.storage.local.set({ [storageKey(videoId)]: endTime });

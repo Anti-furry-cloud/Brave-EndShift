@@ -34,7 +34,7 @@ function showMessage(text, type = "") {
 
 async function sendToVideo(message) {
   if (activeTabId === null) {
-    throw new Error("Etkin sekme bulunamadı.");
+    throw new Error("No active tab found.");
   }
   return chrome.tabs.sendMessage(activeTabId, message);
 }
@@ -43,12 +43,12 @@ async function refreshState() {
   try {
     const state = await sendToVideo({ type: "GET_STATE" });
     if (!state?.ok) {
-      throw new Error(state?.error || "Video bulunamadı.");
+      throw new Error(state?.error || "No video found.");
     }
 
     controls.hidden = false;
     activeVideoId = state.videoId;
-    videoStatus.textContent = state.isAd ? "Reklamın bitmesini bekle" : "Bu video için geçerli";
+    videoStatus.textContent = state.isAd ? "Wait for the ad to finish" : "Settings for this video";
     currentTimeElement.textContent = formatTime(state.currentTime);
     setEndButton.disabled = busy || state.isAd || state.currentTime < 1 || state.duration - state.currentTime < 1;
     clearEndButton.disabled = busy;
@@ -58,15 +58,15 @@ async function refreshState() {
     if (hasSavedEnd) {
       savedTimeElement.textContent = formatTime(state.endTime);
       endBehavior.textContent = state.loop
-        ? "Döngü açık: bu noktada başa sarıp çalmaya devam eder."
-        : "Bu noktada video sona erer. Döngüde dinlemek için videoya sağ tıkla → Döngü.";
+        ? "Loop is on: playback restarts here and keeps playing."
+        : "The video ends here. To repeat it, right-click the video and enable Loop.";
     }
   } catch (error) {
     activeVideoId = null;
     controls.hidden = true;
-    videoStatus.textContent = "Standart bir YouTube videosu aç";
+    videoStatus.textContent = "Open a regular YouTube video";
     showMessage(error.message.includes("Receiving end") || error.message.includes("connection")
-      ? "YouTube sekmesini yenileyip tekrar dene." : error.message, "error");
+      ? "Refresh the YouTube tab and try again." : error.message, "error");
   }
 }
 
@@ -78,9 +78,9 @@ setEndButton.addEventListener("click", async () => {
   try {
     const result = await sendToVideo({ type: "SET_END", videoId: activeVideoId });
     if (!result?.ok) {
-      throw new Error(result?.error || "Bitiş noktası kaydedilemedi.");
+      throw new Error(result?.error || "Could not save the ending.");
     }
-    showMessage(`${formatTime(result.endTime)} bitiş olarak kaydedildi.`, "success");
+    showMessage(`Ending saved at ${formatTime(result.endTime)}.`, "success");
   } catch (error) {
     showMessage(error.message, "error");
   } finally {
@@ -97,9 +97,9 @@ clearEndButton.addEventListener("click", async () => {
   try {
     const result = await sendToVideo({ type: "CLEAR_END", videoId: activeVideoId });
     if (!result?.ok) {
-      throw new Error(result?.error || "Bitiş noktası kaldırılamadı.");
+      throw new Error(result?.error || "Could not remove the ending.");
     }
-    showMessage("Bitiş noktası kaldırıldı.", "success");
+    showMessage("Ending removed.", "success");
   } catch (error) {
     showMessage(error.message, "error");
   } finally {

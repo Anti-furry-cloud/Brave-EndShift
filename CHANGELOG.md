@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.1 — 2026-11-08
+
+- Translate the popup, status messages, confirmations, and content-script errors into English.
+- Set the popup document language to English and translate the extension description.
+- Update the README, privacy notice, and Turkish guide to match the English interface.
+- Keep playback, looping, saved marker keys, and permissions unchanged.
+
 ## 1.1.0 — 2026-11-08
 
 - Rename the project, extension, folder, and release package to Brave-EndShift.

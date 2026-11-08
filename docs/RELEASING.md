@@ -28,4 +28,4 @@ Live YouTube checks above remain pending. The 14 unit tests use a mocked player.
 
 Run `scripts/Package.ps1`. It reads the version from `manifest.json`, runs checks, and writes a ZIP and checksum into `dist/` without overwriting an existing package.
 
-Create a GitHub release tagged `v1.1.0`, copy the matching changelog entry into its notes, and attach `Brave-EndShift-1.1.0.zip` and its checksum. The workflow artifact is a build download, not a published release. Record live test results and limitations honestly in the release notes.
+Create a GitHub release tagged `v1.1.1`, copy the matching changelog entry into its notes, and attach `Brave-EndShift-1.1.1.zip` and its checksum. The workflow artifact is a build download, not a published release. Record live test results and limitations honestly in the release notes.

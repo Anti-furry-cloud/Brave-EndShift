@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,27 +12,27 @@
         <span class="logo" aria-hidden="true">▶</span>
         <div>
           <h1>Brave-EndShift <span id="version" class="version"></span></h1>
-          <p id="videoStatus">Video kontrol ediliyor…</p>
+          <p id="videoStatus">Checking video…</p>
         </div>
       </header>
 
-      <p class="intro">Videonun nerede biteceğini sen seç. Sondaki gereksiz kısmı döngüde de atla.</p>
+      <p class="intro">Choose where your video ends. Skip the outro on every loop.</p>
 
       <section id="controls" hidden>
         <div class="time-card">
-          <span>Şu an</span>
+          <span>Current time</span>
           <strong id="currentTime">00:00</strong>
         </div>
 
         <button id="setEnd" class="primary" type="button">
-          Burayı son olarak belirle
+          Set ending here
         </button>
 
         <div id="savedPanel" class="saved" hidden>
-          <span>Kayıtlı bitiş</span>
+          <span>Saved ending</span>
           <strong id="savedTime">00:00</strong>
           <p id="endBehavior" class="behavior"></p>
-          <button id="clearEnd" class="danger" type="button">Bitişi kaldır</button>
+          <button id="clearEnd" class="danger" type="button">Remove ending</button>
         </div>
       </section>
 

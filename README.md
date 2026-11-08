@@ -2,9 +2,9 @@
 
 Choose where a YouTube video ends in Brave. Skip the outro, a silent tail, or an advertisement recorded into the end of a music video — including on every repeat.
 
-**Version 1.1.0 · Manifest V3 · MIT license · No dependencies**
+**Version 1.1.1 · Manifest V3 · MIT license · No dependencies**
 
-Developed by [Anti-furry-cloud](https://github.com/Anti-furry-cloud). The popup is in Turkish. [Türkçe kullanım](docs/KULLANIM.md).
+Developed by [Anti-furry-cloud](https://github.com/Anti-furry-cloud). The interface is in English. [Türkçe kullanım](docs/KULLANIM.md).
 
 ## Install in Brave
 
@@ -20,14 +20,14 @@ The extension runs directly from these files; there is no installer or build ste
 
 1. Open a regular YouTube video at `https://www.youtube.com/watch?v=...`.
 2. Seek to the moment where you want it to end. Pause there if you want to choose a precise moment.
-3. Open the extension and click **Burayı son olarak belirle** (Use this moment as the ending).
+3. Open the extension and click **Set ending here**.
 4. Rewind and play. When playback reaches the marker, Brave-EndShift skips the rest.
 
 **Listening on repeat?** Right-click the YouTube player and enable **Loop / Döngü**. Brave-EndShift reads the player's native loop setting and restarts at the beginning when your custom ending is reached. For example, a 4:00 music video with an ad in its final 20 seconds can repeat from 0:00 to 3:40. The popup shows whether loop mode is active.
 
 When loop mode is off, the extension seeks to the video's actual end so the browser fires its normal end event. YouTube then handles replay, autoplay, or the playlist according to its own settings. Brave-EndShift does not click the next-video button or send synthetic end events.
 
-Markers are remembered per video on this browser profile. Use **Bitişi kaldır** (Remove ending) to restore the full video. Changes also reach other open tabs for the same video. Paused videos are left in place while you choose a timestamp.
+Markers are remembered per video on this browser profile. Use **Remove ending** to restore the full video. Changes also reach other open tabs for the same video. Paused videos are left in place while you choose a timestamp.
 
 The original file, YouTube's displayed duration, and its progress bar remain unchanged. This extension controls the effective playback ending; it does not download, edit, or export video files.
 
@@ -74,7 +74,7 @@ On Windows, with Node.js and PowerShell installed:
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\Package.ps1
 ```
 
-The command checks the project and creates `dist/Brave-EndShift-1.1.0.zip` plus a SHA-256 checksum. It includes only extension files and user documentation; Git history and development files are excluded. Each package has `manifest.json` at its root.
+The command checks the project and creates `dist/Brave-EndShift-1.1.1.zip` plus a SHA-256 checksum. It includes only extension files and user documentation; Git history and development files are excluded. Each package has `manifest.json` at its root.
 
 GitHub Actions runs the same checks on pushes and pull requests and uploads the package as a workflow artifact. For a public release, follow [docs/RELEASING.md](docs/RELEASING.md).
 
