@@ -1,0 +1,14 @@
+{
+  "name": "brave-endshift",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Choose where YouTube videos end, including when listening on repeat.",
+  "license": "MIT",
+  "author": "Anti-furry-cloud",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "validate": "node scripts/validate.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "check": "npm run validate && npm test"
+  }
+}

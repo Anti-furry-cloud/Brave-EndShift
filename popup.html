@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brave-EndShift</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <span class="logo" aria-hidden="true">▶</span>
+        <div>
+          <h1>Brave-EndShift <span id="version" class="version"></span></h1>
+          <p id="videoStatus">Video kontrol ediliyor…</p>
+        </div>
+      </header>
+
+      <p class="intro">Videonun nerede biteceğini sen seç. Sondaki gereksiz kısmı döngüde de atla.</p>
+
+      <section id="controls" hidden>
+        <div class="time-card">
+          <span>Şu an</span>
+          <strong id="currentTime">00:00</strong>
+        </div>
+
+        <button id="setEnd" class="primary" type="button">
+          Burayı son olarak belirle
+        </button>
+
+        <div id="savedPanel" class="saved" hidden>
+          <span>Kayıtlı bitiş</span>
+          <strong id="savedTime">00:00</strong>
+          <p id="endBehavior" class="behavior"></p>
+          <button id="clearEnd" class="danger" type="button">Bitişi kaldır</button>
+        </div>
+      </section>
+
+      <p id="message" role="status" aria-live="polite"></p>
+      <footer>Developed by <a href="https://github.com/Anti-furry-cloud" target="_blank" rel="noopener noreferrer">Anti-furry-cloud · GitHub</a></footer>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

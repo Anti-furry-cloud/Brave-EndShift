@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Brave-EndShift",
+  "version": "1.1.0",
+  "author": "Anti-furry-cloud",
+  "description": "YouTube videosunun nerede biteceğini seç. Döngüde dinlerken sondaki gereksiz kısımları her tekrarda atla.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_title": "Brave-EndShift",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
